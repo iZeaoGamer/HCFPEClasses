@@ -1,6 +1,7 @@
 <?php
 namespace eon\Classes;
 
+use pocketmine\entity\EffectInstance;
 use pocketmine\entity\Effect;
 use pocketmine\event\entity\EntityArmorChangeEvent;
 use pocketmine\event\Listener;
@@ -26,17 +27,17 @@ class Main extends PluginBase implements Listener {
 				public function onRun(int $currentTick) {
 					/** @var Player|null $entity */
 					$entity = $this->getOwner()->getServer()->getPlayer($this->player);
-					if(count($entity->getInventory()->getArmorContents()) === 4) {
+					if(count($entity->getArmorInventory()->getContents()) === 4) {
 						/** @var Item[] $slots */
-						$slots = $entity->getInventory()->getArmorContents();
+						$slots = $entity->getArmorInventory()->getContents();
 						if(
 							$slots[0]->getId() === Item::LEATHER_HELMET and
 							$slots[1]->getId() === Item::LEATHER_CHESTPLATE and
 							$slots[2]->getId() === Item::LEATHER_LEGGINGS and
 							$slots[3]->getId() === Item::LEATHER_BOOTS
 						) {
-							$entity->addEffect(Effect::getEffect(Effect::SPEED)->setAmplifier(2)->setDuration(INT32_MAX));
-							$entity->addEffect(Effect::getEffect(Effect::DAMAGE_RESISTANCE)->setDuration(INT32_MAX));
+							$entity->addEffect(EffectInstance::getEffect(Effect::SPEED), 3, INT32_MAX);
+							$entity->addEffect(EffectInstance::getEffect(Effect::DAMAGE_RESISTANCE), INT32_MAX);
 							return;
 						}
 						if(
@@ -45,10 +46,9 @@ class Main extends PluginBase implements Listener {
 							$slots[2]->getId() === Item::IRON_LEGGINGS and
 							$slots[3]->getId() === Item::IRON_BOOTS
 						) {
-							$entity->addEffect(Effect::getEffect(Effect::NIGHT_VISION)->setDuration(INT32_MAX));
-							$entity->addEffect(Effect::getEffect(Effect::FIRE_RESISTANCE)->setDuration(INT32_MAX));
-							$entity->addEffect(Effect::getEffect(Effect::HASTE)->setAmplifier(1)->setDuration(INT32_MAX));
-							$entity->addEffect(Effect::getEffect(Effect::INVISIBILITY)->setDuration(INT32_MAX));
+							$entity->addEffect(EffectInstance::getEffect(Effect::NIGHT_VISION), INT32_MAX);
+							$entity->addEffect(EffectInstance::getEffect(Effect::FIRE_RESISTANCE), INT32_MAX);
+							$entity->addEffect(EffectInstance::getEffect(Effect::HASTE), 2, INT32_MAX);
 							return;
 						}
 						if(
@@ -57,8 +57,8 @@ class Main extends PluginBase implements Listener {
 							$slots[2]->getId() === Item::GOLD_LEGGINGS and
 							$slots[3]->getId() === Item::GOLD_BOOTS
 						) {
-							$entity->addEffect(Effect::getEffect(Effect::REGENERATION)->setAmplifier(1)->setDuration(INT32_MAX));
-							$entity->addEffect(Effect::getEffect(Effect::SPEED)->setAmplifier(1)->setDuration(INT32_MAX));
+							$entity->addEffect(EffectInstance::getEffect(Effect::REGENERATION), 1, INT32_MAX);
+							$entity->addEffect(EffectInstance::getEffect(Effect::SPEED), 1, INT32_MAX);
 							return;
 						}
 						if(
@@ -67,9 +67,9 @@ class Main extends PluginBase implements Listener {
 							$slots[2]->getId() === Item::CHAIN_LEGGINGS and
 							$slots[3]->getId() === Item::CHAIN_BOOTS
 						) {
-							$entity->addEffect(Effect::getEffect(Effect::JUMP)->setAmplifier(1)->setDuration(INT32_MAX));
-							$entity->addEffect(Effect::getEffect(Effect::SPEED)->setAmplifier(2)->setDuration(INT32_MAX));
-							$entity->addEffect(Effect::getEffect(Effect::STRENGTH)->setDuration(INT32_MAX));
+							$entity->addEffect(EffectInstance::getEffect(Effect::JUMP), 1, INT32_MAX);
+							$entity->addEffect(Effectinstance::getEffect(Effect::SPEED), 2, INT32_MAX);
+							$entity->addEffect(EffectInstance::getEffect(Effect::STRENGTH), INT32_MAX);
 							return;
 						}
 						$entity->removeAllEffects();
