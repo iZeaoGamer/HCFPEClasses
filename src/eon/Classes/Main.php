@@ -36,8 +36,8 @@ class Main extends PluginBase implements Listener {
 							$slots[2]->getId() === Item::LEATHER_LEGGINGS and
 							$slots[3]->getId() === Item::LEATHER_BOOTS
 						) {
-							$entity->addEffect(EffectInstance::getEffect(Effect::SPEED), 3, INT32_MAX);
-							$entity->addEffect(EffectInstance::getEffect(Effect::DAMAGE_RESISTANCE), INT32_MAX);
+							$entity->addEffect(new EffectInstance(Effect::getEffect(Effect::SPEED), 3, INT32_MAX));
+							$entity->addEffect(new EffectInstance(Effect::getEffect(Effect::DAMAGE_RESISTANCE), INT32_MAX));
 							return;
 						}
 						if(
@@ -46,9 +46,9 @@ class Main extends PluginBase implements Listener {
 							$slots[2]->getId() === Item::IRON_LEGGINGS and
 							$slots[3]->getId() === Item::IRON_BOOTS
 						) {
-							$entity->addEffect(EffectInstance::getEffect(Effect::NIGHT_VISION), INT32_MAX);
-							$entity->addEffect(EffectInstance::getEffect(Effect::FIRE_RESISTANCE), INT32_MAX);
-							$entity->addEffect(EffectInstance::getEffect(Effect::HASTE), 2, INT32_MAX);
+							$entity->addEffect(new EffectInstance(Effect::getEffect(Effect::NIGHT_VISION), INT32_MAX));
+							$entity->addEffect(new EffectInstance(Effect::getEffect(Effect::FIRE_RESISTANCE), INT32_MAX));
+							$entity->addEffect(new EffectInstance(Effect::getEffect(Effect::HASTE), 2, INT32_MAX));
 							return;
 						}
 						if(
@@ -57,8 +57,8 @@ class Main extends PluginBase implements Listener {
 							$slots[2]->getId() === Item::GOLD_LEGGINGS and
 							$slots[3]->getId() === Item::GOLD_BOOTS
 						) {
-							$entity->addEffect(EffectInstance::getEffect(Effect::REGENERATION), 1, INT32_MAX);
-							$entity->addEffect(EffectInstance::getEffect(Effect::SPEED), 1, INT32_MAX);
+							$entity->addEffect(new EffectInstance(Effect::getEffect(Effect::REGENERATION), 1, INT32_MAX));
+							$entity->addEffect(new EffectInstance(Effect::getEffect(Effect::SPEED), 1, INT32_MAX));
 							return;
 						}
 						if(
@@ -67,9 +67,9 @@ class Main extends PluginBase implements Listener {
 							$slots[2]->getId() === Item::CHAIN_LEGGINGS and
 							$slots[3]->getId() === Item::CHAIN_BOOTS
 						) {
-							$entity->addEffect(EffectInstance::getEffect(Effect::JUMP), 1, INT32_MAX);
-							$entity->addEffect(Effectinstance::getEffect(Effect::SPEED), 2, INT32_MAX);
-							$entity->addEffect(EffectInstance::getEffect(Effect::STRENGTH), INT32_MAX);
+							$entity->addEffect(new EffectInstance(Effect::getEffect(Effect::JUMP), 1, INT32_MAX));
+							$entity->addEffect(new EffectInstance(Effect::getEffect(Effect::SPEED), 2, INT32_MAX));
+							$entity->addEffect(new EffectInstance(Effect::getEffect(Effect::STRENGTH), INT32_MAX));
 							return;
 						}
 						$entity->removeAllEffects();
